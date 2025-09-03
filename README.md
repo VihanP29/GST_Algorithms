@@ -42,8 +42,6 @@ Below is a demonstration of the application's core functionality: selecting a da
 
 ## Installation & Usage
 
-To run this application locally, please follow these steps:
-
 **1. Prerequisites**
 * Python 3.8+
 * `pip` package manager
