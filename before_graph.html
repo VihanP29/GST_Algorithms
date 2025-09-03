@@ -1,0 +1,127 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 600px;
+                 background-color: #222222;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "#97c2fc", "font": {"color": "white"}, "id": "Alpha", "label": "Alpha", "shape": "dot", "size": 10, "title": "Alpha"}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "Bravo", "label": "Bravo", "shape": "dot", "size": 10, "title": "Bravo"}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "Charlie", "label": "Charlie", "shape": "dot", "size": 10, "title": "Charlie"}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "Delta", "label": "Delta", "shape": "dot", "size": 10, "title": "Delta"}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "Echo", "label": "Echo", "shape": "dot", "size": 10, "title": "Echo"}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "Foxtrot", "label": "Foxtrot", "shape": "dot", "size": 10, "title": "Foxtrot"}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "Juliet", "label": "Juliet", "shape": "dot", "size": 10, "title": "Juliet"}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "Golf", "label": "Golf", "shape": "dot", "size": 10, "title": "Golf"}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "Hotel", "label": "Hotel", "shape": "dot", "size": 10, "title": "Hotel"}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "India", "label": "India", "shape": "dot", "size": 10, "title": "India"}]);
+                  edges = new vis.DataSet([{"arrows": "to", "from": "Alpha", "title": "Value: 500.00\nTime: t001", "to": "Bravo", "value": 500, "width": 1}, {"arrows": "to", "from": "Bravo", "title": "Value: 510.00\nTime: t002", "to": "Charlie", "value": 510, "width": 1}, {"arrows": "to", "from": "Charlie", "title": "Value: 505.00\nTime: t003", "to": "Alpha", "value": 505, "width": 1}, {"arrows": "to", "from": "Charlie", "title": "Value: 802.00\nTime: t011", "to": "Delta", "value": 802, "width": 1}, {"arrows": "to", "from": "Delta", "title": "Value: 800.00\nTime: t004", "to": "Echo", "value": 800, "width": 1}, {"arrows": "to", "from": "Echo", "title": "Value: 805.00\nTime: t005", "to": "Foxtrot", "value": 805, "width": 1}, {"arrows": "to", "from": "Echo", "title": "Value: 450.00\nTime: t013", "to": "Juliet", "value": 450, "width": 1}, {"arrows": "to", "from": "Foxtrot", "title": "Value: 810.00\nTime: t006", "to": "Golf", "value": 810, "width": 1}, {"arrows": "to", "from": "Juliet", "title": "Value: 302.00\nTime: t010", "to": "Alpha", "value": 302, "width": 1}, {"arrows": "to", "from": "Golf", "title": "Value: 300.00\nTime: t007", "to": "Hotel", "value": 300, "width": 1}, {"arrows": "to", "from": "Hotel", "title": "Value: 305.00\nTime: t008", "to": "India", "value": 305, "width": 1}, {"arrows": "to", "from": "Hotel", "title": "Value: 308.00\nTime: t012", "to": "Foxtrot", "value": 308, "width": 1}, {"arrows": "to", "from": "India", "title": "Value: 310.00\nTime: t009", "to": "Juliet", "value": 310, "width": 1}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {"nodes": {"font": {"size": 18}}, "edges": {"color": {"inherit": true}, "smooth": {"type": "dynamic"}}, "physics": {"forceAtlas2Based": {"gravitationalConstant": -50, "centralGravity": 0.005, "springLength": 230, "springConstant": 0.18}, "minVelocity": 0.75, "solver": "forceAtlas2Based"}};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>
