@@ -4,7 +4,7 @@ An interactive web application that implements and visualizes algorithms from th
 
 ---
 
-## 📜 Project Description
+## Project Description
 
 Circular trading is a method of tax evasion where a group of businesses create fictitious transactions among themselves to inflate sales, hide malicious purchases, and fraudulently claim tax credits. These schemes create cycles in the transaction network that are difficult to detect manually in large datasets.
 
@@ -12,7 +12,7 @@ This project provides an interactive tool to combat this issue. It models transa
 
 ---
 
-## ✨ Key Features
+## Key Features
 
 * **Interactive Web Interface**: Built with Streamlit for a user-friendly and responsive experience.
 * **Advanced Graph Visualization**: Uses Pyvis and NetworkX to render "before" and "after" views of the transaction network.
@@ -22,7 +22,7 @@ This project provides an interactive tool to combat this issue. It models transa
 
 ---
 
-## 🚀 Live Demo & Screenshots
+## Live Demo & Screenshots
 
 Below is a demonstration of the application's core functionality: selecting a dataset, viewing the initial cyclic graph, running the analysis, and observing the resulting acyclic graph along with the identified fraudulent transactions.
 
@@ -30,7 +30,7 @@ Below is a demonstration of the application's core functionality: selecting a da
 
 ---
 
-## 🛠️ Technical Stack
+## Technical Stack
 
 * **Backend & Logic**: Python
 * **Web Framework**: Streamlit
@@ -40,7 +40,7 @@ Below is a demonstration of the application's core functionality: selecting a da
 
 ---
 
-## ⚙️ Installation & Usage
+## Installation & Usage
 
 To run this application locally, please follow these steps:
 
