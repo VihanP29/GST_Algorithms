@@ -6,9 +6,9 @@ An interactive web application that implements and visualizes algorithms from th
 
 ## 📜 Project Description
 
-[cite_start]Circular trading is a method of tax evasion where a group of businesses create fictitious transactions among themselves to inflate sales, hide malicious purchases, and fraudulently claim tax credits[cite: 24, 71]. [cite_start]These schemes create cycles in the transaction network that are difficult to detect manually in large datasets[cite: 92].
+Circular trading is a method of tax evasion where a group of businesses create fictitious transactions among themselves to inflate sales, hide malicious purchases, and fraudulently claim tax credits. These schemes create cycles in the transaction network that are difficult to detect manually in large datasets.
 
-This project provides an interactive tool to combat this issue. [cite_start]It models transaction data as a directed graph and applies a specialized Weighted Cycle Deletion (WCD) algorithm to identify and surgically remove the most likely fraudulent cycles[cite: 12, 93]. The result is a "cleaned" transaction graph, revealing the underlying flow of legitimate business activities for auditors.
+This project provides an interactive tool to combat this issue. It models transaction data as a directed graph and applies a specialized Weighted Cycle Deletion (WCD) algorithm to identify and surgically remove the most likely fraudulent cycles. The result is a "cleaned" transaction graph, revealing the underlying flow of legitimate business activities for auditors.
 
 ---
 
